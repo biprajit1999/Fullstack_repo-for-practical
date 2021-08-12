@@ -1,0 +1,3 @@
+1. To create a navigation bar 
+2. To create central content 
+3. To create footer
