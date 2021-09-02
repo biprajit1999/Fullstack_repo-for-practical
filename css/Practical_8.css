@@ -57,7 +57,6 @@ html {
     display: none;
 }
 
-      /* ------Header Container-------- */
 
 #header {
     width: 1175px;
@@ -71,7 +70,6 @@ html {
     justify-content: space-around;
 }
 
-      /* -------Navigation Bar----------- */
 
 #navBar {
     display: flex;
