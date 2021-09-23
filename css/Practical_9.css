@@ -86,7 +86,7 @@ html {
 }
 
 #banner {
-  background-image: url(https://imgur.com/qIxEnMl.jpg);
+  background-image: url(../assets/img_frst.jpeg);
   background-size: cover;
   background-position: center;
 }
@@ -330,7 +330,8 @@ h1 {
   }
 
   #banner {
-    background-image: url(https://imgur.com/qIxEnMl.jpg);
+    background-image: url(../assets/img_frst.jpeg);
+    /* background-image: url(https://imgur.com/qIxEnMl.jpg); */
     background-size: cover;
     background-position: center;
   }
