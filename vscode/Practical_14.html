@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+
+        body
+        {
+            background-color: black;
+        }
+
+        h1
+        {
+            color: white;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .poke5
+        {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            left: 45%;
+            top: 10%;
+            /* background-color: yellow; */
+        }
+
+        .poke4
+        {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            left: 49%;
+            top: 10%;
+            /* background-color: yellow; */
+            color: white;
+        }
+
+        .poke3
+        {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            left: 53%;
+            top: 10%;
+            /* background-color: yellow; */
+        }
+
+        .text-but
+        {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            font-size: 30px;
+            background-color: yellow;
+            text-align: center;
+            padding-bottom: 10px;
+            justify-content: center;
+        }
+
+        .count
+        {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            font-size: 40px;
+            /* background-color: yellow; */
+            text-align: center;
+            /* padding-bottom: 10px; */
+            justify-content: center;
+
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <h1>
+        counter
+    </h1>
+    <div class="page">
+        <div class="poke5" id="poke">
+            <button style="border: none;background-color: #efeff1;"><div class="text-but">-</div>
+            </button>
+        </div>
+
+        <div class="poke3" id="poke2">
+            <button style="border: none;background-color: #efeff1;"><div class="text-but">+</div>
+            </button>
+        </div>
+
+        <div class="poke4">
+            <div class="count" id="counter2">0</div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var poke = document.getElementById('poke');
+    var cmp = document.getElementById('counter2');
+    poke.addEventListener('click', myfonction)
+
+    var poke2 = document.getElementById('poke2');
+    var cmp2 = document.getElementById('counter2');
+    
+    poke2.addEventListener('click', myfonction2)
+
+    
+           
+            //===========================================================
+    function myfonction() {
+        // do {
+        //     cmp.innerHTML = parseInt(cmp.innerHTML) -1;
+        // } while (cmp.innerHTML!=0);
+
+        cmp.innerHTML = parseInt(cmp.innerHTML) -1;
+
+        if(cmp.innerHTML == 0)
+        {
+            // document.getElementById("poke").disabled = true;
+            poke.disabled = true;
+        }
+            
+    }
+
+    function myfonction2() {
+        cmp.innerHTML = parseInt(cmp.innerHTML) +1;
+
+        if(cmp.innerHTML == 0)
+        {
+            // document.getElementById("poke").disabled = true;
+            poke.disabled = true;
+        }
+    }
+
+    
+
+</script>
+</html>
