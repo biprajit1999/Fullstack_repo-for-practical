@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+</head>
+<style>
+    *
+    {
+        padding: 0;
+        margin: 0;
+    }
+
+    body
+    {
+        background-color: rgb(69, 21, 114);
+    }
+
+    .form_layout
+    {
+        height: 80vh;
+        width: 55vh;
+        background-color: azure;
+        margin: auto;
+        margin-top: 6%;
+        justify-content: center;
+
+    }
+
+    header
+    {
+        height: 15%;
+        background-color: rgb(224, 216, 216);
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        line-height: 10vh;
+    }
+
+    h2
+    {
+
+    }
+
+    .form_content
+    {
+        text-align: left;
+        padding: 10px;
+        margin: 10px;
+
+    }
+
+    form input[type="text"]
+    {
+        display: block;
+        width: 94%;
+        height: 8%;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding-top: 5px;
+        border: 1px solid black;
+        padding: 0.5em; 
+        font-size: 0.875rem;
+    }
+
+    form input[type="password"]
+    {
+        display: block;
+        width: 94%;
+        height: 8%;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding-top: 5px;
+        border: 1px solid black;
+        padding: 0.5em; 
+        font-size: 0.875rem;
+    }
+
+    #submit
+    {
+        display: block;
+        width: 94%;
+        height: 8%;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding-top: 5px;
+        border: 1px solid black;
+        padding: 0.5em; 
+        font-size: 0.875rem;
+        background-color: rgb(69, 21, 114);
+        color: white;
+    }
+
+    .form-control input 
+    {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        outline: none;
+        border: 2px solid #f0f0f0;
+    }
+
+    .form-control i 
+    {
+        position: absolute;
+        left: 60%;
+        visibility: hidden;
+    }
+    .form-control small 
+    {
+        position: relative;
+        /* left: 10px; */
+        float: left;
+        visibility: hidden;
+    }
+
+    .form-control.success input {
+    border-color: rgb(48, 207, 48);
+    }
+    .form-control.success .fa-check-circle {
+    visibility: visible;
+    color: rgb(48, 207, 48);
+    }
+    .form-control.error input {
+    border-color: red;
+    }
+    .form-control.error .fa-exclamation-circle {
+    color: red;
+    visibility: visible;
+    }
+    .form-control.error small {
+    visibility: visible;
+    color: red;
+    }
+
+
+</style>
+<body>
+    <div class="form_layout">
+        <header>
+            <h2>
+                Create Account
+            </h2>
+        </header>
+    <div class="form_content">
+        <form class="form" id="form">
+            <div class="form-control">
+                <label for="username">Username</label><br>
+                <input type="text" name="Username" id="username" placeholder="Enter Username">
+                <i class="fa fa-check-circle"></i>
+                <i class="fa fa-exclamation-circle"></i>
+                <small>Error Msg</small>
+                <br><br>
+            </div>
+            <div class="form-control">
+                <label for="email">Email</label><br>
+                <input type="text" name="mailid" id="email" placeholder="Enter Email Address">
+                <i class="fa fa-check-circle"></i>
+                <i class="fa fa-exclamation-circle"></i>
+                <small>Error Msg</small>
+                <br><br>
+            </div>
+            <div class="form-control">
+                <label for="password1">Password</label><br>
+                <input type="password" name="password" id="password1" placeholder="Enter Password">
+                <i class="fa fa-check-circle"></i>
+                <i class="fa fa-exclamation-circle"></i>
+                <small>Error Msg</small>
+                <br><br>
+            </div>
+            <div class="form-control">
+                <label for="password2">Password Again</label><br>
+                <input type="Password" name="password_check" id="password2" placeholder="Enter Passoword Again">
+                <i class="fa fa-check-circle"></i>
+                <i class="fa fa-exclamation-circle"></i>
+                <small>Error Msg</small>
+                <br><br>
+            </div>
+            <button type="submit" id="submit">Submit</button>
+
+        </form>
+    </div>
+
+    </div>
+
+    <script>
+        const form = document.getElementById('form');
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password1 = document.getElementById('password1');
+        const password2 = document.getElementById('password2');
+
+
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+            checkInputs();
+        });
+
+
+        function checkInputs(){
+            const usernameValue =  username.value.trim();
+            const emailValue =  email.value.trim();
+            const password1Value =  password1.value.trim();
+            const password2Value =  password2.value.trim();
+
+            if( usernameValue ==='')
+            {
+                showError(username,"Username can not be blank");
+            }
+            else
+            {
+                showSuccess(username);
+            } 
+            if( emailValue ==='')
+            {
+                showError(email,"Email Id can not be blank");
+            }
+            else if(!isEmailValid(emailValue))
+            {
+                showError(email,"Email is not Valid");
+            }
+            else
+            {
+                showSuccess(email);
+            }    
+
+            if( password1Value ==='')
+            {
+                showError(password1,"Password can not be blank");
+            }
+            else
+            {
+                showSuccess(password1);
+            }
+
+            if( password2Value ==='')
+            {
+                showError(password2,"Password can not be blank");
+            }
+            else if(password2Value != password1Value)
+            {
+                showError(password2,"Passwords not matched");
+            }
+            else
+            {
+                showSuccess(password2);
+            } 
+
+        }
+
+        function showError(input,msg)
+        {
+            const formControl = input.parentNode;
+            formControl.className = 'form-control error';
+            const small = formControl.querySelector('small');
+            small.innerHTML = msg;
+        }
+        function showSuccess(input)
+        {
+            const formControl = input.parentNode;
+            formControl.className = 'form-control success';
+        }
+
+        function isEmailValid(email1){
+            return /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,3})$/.test(email1); // email is the email value
+        }
+    </script>  
+    
+</body>
+</html>
